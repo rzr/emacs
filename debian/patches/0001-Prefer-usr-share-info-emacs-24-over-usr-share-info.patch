@@ -1,0 +1,32 @@
+From 7db729d8e9d10eb94ab851336d460444182f90d4 Mon Sep 17 00:00:00 2001
+From: Rob Browning <rlb@defaultvalue.org>
+Date: Mon, 4 Apr 2011 22:46:21 -0500
+Subject: Prefer /usr/share/info/emacs-24 over /usr/share/info.
+
+Emacs will prefer /usr/share/info/emacs-24 over /usr/share/info.
+
+The value of Info-default-directory-list has been augmented via
+site-init.el to include /usr/share/info/emacs-24 before
+/usr/share/info.
+---
+ lisp/site-init.el |   11 +++++++++++
+ 1 file changed, 11 insertions(+)
+ create mode 100644 lisp/site-init.el
+
+diff --git a/lisp/site-init.el b/lisp/site-init.el
+new file mode 100644
+index 0000000..ab3396c
+--- /dev/null
++++ b/lisp/site-init.el
+@@ -0,0 +1,11 @@
++
++;; Add the flavor specific directory for Debian.
++(setq Info-default-directory-list
++      (let ((result nil)
++            (found-match nil))
++        (dolist (elt Info-default-directory-list (nreverse result))
++          (if (and (not found-match) (equal elt "/usr/share/info/"))
++              (progn
++                (push "/usr/share/info/emacs-24" result)
++                (setq found-match t)))
++          (push elt result))))
