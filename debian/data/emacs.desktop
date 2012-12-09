@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=GNU Emacs
+Comment=The GNU Emacs editor
+Exec=/usr/bin/emacs
+Icon=emacs
+X-Window-Icon=emacs
+X-Window-Icon-Dimmed=emacs
+X-HildonDesk-ShowInToolBar=true
+X-Osso-Type=application/x-executable
+Terminal=false

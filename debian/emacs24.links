@@ -1,0 +1,8 @@
+/opt/emacs24/bin/emacs		/usr/bin/emacs
+/opt/emacs24/bin/etags		/usr/bin/etags
+/opt/emacs24/bin/ctags		/usr/bin/ctags
+/opt/emacs24/bin/emacsclient	/usr/bin/emacsclient
+/opt/emacs24/bin/ebrowse	/usr/bin/ebrowse
+/opt/emacs24/bin/rcs-checkin	/usr/bin/rcs-checkin
+/opt/emacs24/bin/grep-changelog	/usr/bin/grep-changelog
+/opt/emacs24/share/icons/hicolor/48x48/apps/emacs.png /usr/share/icons/hicolor/48x48/apps/emacs.png

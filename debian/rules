@@ -1,0 +1,40 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+export DEB_HOST_GNU_CPU ?= $(shell dpkg-architecture -qDEB_HOST_GNU_CPU)
+
+export DEB_HOST_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+export DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+src_name := emacs24
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- --prefix=/opt/$(src_name) --without-sound
+
+override_dh_install:
+	# Move LISP source files to separate package
+	(cd $(CURDIR)/debian/tmp && find -name "*.el.gz" -print0 \
+           | tar cpf - --null --files-from -) \
+             | (cd debian/$(src_name)-el && tar xpf -)
+	find debian/tmp -name "*.el.gz" -exec rm '{}' \;
+	# Move the rest into the main binary package
+	rm -r debian/tmp/var
+	mv debian/tmp/* debian/$(src_name)
+	dh_install
+	
+override_dh_installman:
+
+override_dh_installchangelogs:
+

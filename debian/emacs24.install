@@ -1,0 +1,2 @@
+debian/data/emacs.desktop usr/share/applications/hildon
+debian/data/site-start.el opt/emacs24/share/emacs/site-lisp
