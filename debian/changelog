@@ -1,3 +1,16 @@
+emacs24 (24.2+1-1.0~rzr3) quantal; urgency=low
+
+  * 
+
+ -- Philippe Coval <rzr@gna.org>  Tue, 11 Dec 2012 20:30:15 +0100
+
+emacs24 (24.2+1-0~rzr2) quantal; urgency=low
+
+  * Non-maintainer upload.
+  * http://rzr.online.fr/q/harmattan
+
+ -- Philippe Coval <rzr@gna.org>  Sun, 09 Dec 2012 23:32:24 +0100
+
 emacs24 (24.2-1) unstable; urgency=low
 
   * Initial release.
